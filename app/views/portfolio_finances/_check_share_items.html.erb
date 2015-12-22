@@ -1,0 +1,11 @@
+<form action="/portfolio_finances/<%=portfolio_finance.id%>/check_share_items.js" accept-charset="UTF-8" data-remote="true"
+      name="check_share_items" method="post">
+
+<% portfolio_finance.share_items.each do |item| %>
+      <input type="checkbox" name="check_share_items[<%=item.share.symbol%>]"> <%= item.share.title %> (<%= item.quantity %>)
+<% end %>
+  <button type="submit">обновить</button>
+</form>
+<script>
+    $('input:checkbox').attr('checked','checked');
+</script>

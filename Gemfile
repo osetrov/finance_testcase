@@ -50,3 +50,9 @@ gem 'rake'
 gem 'devise'
 
 gem 'simple_form'
+
+gem 'yahoo-finance'
+
+gem "chartkick"
+
+gem 'dalli'

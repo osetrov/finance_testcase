@@ -5,4 +5,9 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  resources :portfolio_finances do
+    post 'check_share_items', :on => :member
+  end
+
+
 end

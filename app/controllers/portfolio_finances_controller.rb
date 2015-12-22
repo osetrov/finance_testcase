@@ -1,5 +1,5 @@
 class PortfolioFinancesController < ApplicationController
-  before_action :set_portfolio_finance, only: [:show, :edit, :update, :destroy]
+  before_action :set_portfolio_finance, only: [:show, :edit, :update, :destroy, :check_share_items]
 
   # GET /portfolio_finances
   # GET /portfolio_finances.json
@@ -51,6 +51,7 @@ class PortfolioFinancesController < ApplicationController
   def update
 
     if params[:portfolio_finance][:share_items].present?
+      ShareItem.where(:portfolio_finance_id => @portfolio_finance.id).destroy_all
       params[:portfolio_finance][:share_items].each do |key, share_item|
         if share_item[:quantity].to_i > 0
           @portfolio_finance.add_share_item(ShareItem.new(:share_id => key, :quantity => share_item[:quantity].to_i))
@@ -76,6 +77,13 @@ class PortfolioFinancesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Portfolio finance was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def check_share_items
+    @data_line_chart = @portfolio_finance.historical_quotes Time::now-2.years, Time::now, params['check_share_items'].keys
+    respond_to do |format|
+      format.js { }
     end
   end
 

@@ -2,6 +2,7 @@
   <thead>
   <tr>
     <th>Title</th>
+    <th>Текущая стоимость</th>
     <th colspan="2"></th>
   </tr>
   </thead>
@@ -9,8 +10,9 @@
   <tbody>
   <% portfolio_finances.each do |portfolio_finance| %>
       <tr>
-        <td><%= link_to portfolio_finance.title.present? ? portfolio_finance.title :
-                        'Портфель ID ' + portfolio_finance.id.to_s, portfolio_finance  %></td>
+        <td><%= link_to portfolio_finance.title.present? ? 'График для ' + portfolio_finance.title :
+                        'График для портфель ID ' + portfolio_finance.id.to_s, portfolio_finance  %></td>
+        <td><%= number_to_currency( portfolio_finance.total_ask_last_trade, :unit => "$") %></td>
         <td><%= link_to 'Edit', edit_portfolio_finance_path(portfolio_finance) %></td>
         <td><%= link_to 'Destroy', portfolio_finance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

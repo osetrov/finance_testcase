@@ -1,14 +1,11 @@
+<%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @portfolio_finance.user %>
-</p>
+<%= render 'portfolio_finances/check_share_items', :portfolio_finance => @portfolio_finance %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @portfolio_finance.title %>
-</p>
-
+<div id="line_chart">
+    <%= line_chart @portfolio_finance.historical_quotes Time::now-2.years,Time::now %>
+</div>
 <%= link_to 'Edit', edit_portfolio_finance_path(@portfolio_finance) %> |
 <%= link_to 'Back', root_path %>
