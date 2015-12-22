@@ -48,3 +48,5 @@ gem 'rake'
 
 # Регистрация / авторизация пользователей.
 gem 'devise'
+
+gem 'simple_form'

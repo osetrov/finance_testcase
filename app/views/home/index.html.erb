@@ -1,2 +1,11 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<% if current_user.portfolio_finances.size == 0 %>
+    <%= link_to 'Создать первый портфель акций', new_portfolio_finance_path %>
+<% else %>
+
+    <%= render 'portfolio_finances/portfolio_finances', :portfolio_finances => current_user.portfolio_finances %>
+
+    <br><br>
+    <%= link_to 'Создать новый портфель акций', new_portfolio_finance_path %>
+<% end %>

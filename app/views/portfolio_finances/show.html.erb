@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @portfolio_finance.user %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @portfolio_finance.title %>
+</p>
+
+<%= link_to 'Edit', edit_portfolio_finance_path(@portfolio_finance) %> |
+<%= link_to 'Back', root_path %>
