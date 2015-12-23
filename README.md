@@ -1,3 +1,5 @@
+https://financetestcase.herokuapp.com
+
 нужен memcached, ruby 2.1.2, postgresql
 
 Регистрация через devise, после регистрации/авторазиации на домашнюю страницу. Было бы правильно ограничить права в CanCan, но в
