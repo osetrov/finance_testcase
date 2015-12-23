@@ -20,7 +20,7 @@ class PortfolioFinance < ActiveRecord::Base
       select_share_items = share_items.where(:share_id =>select_shares.map(&:id).uniq)
       result = select_share_items.first.historical_quotes start_date, end_date
       select_share_items.each do |share_item|
-        if share_item != share_items.first
+        if share_item != select_share_items.first
           result = result.merge(share_item.historical_quotes start_date, end_date){ |k, b_value, a_value|
             a_value + b_value
           }
